@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Edge Memory Dashboard</title>
+<style>
+  :root { color-scheme: dark; }
+  body { font-family: -apple-system, Segoe UI, sans-serif; background:#0d1117; color:#e6edf3; margin:0; padding:24px; }
+  h1 { font-size:20px; margin-bottom:4px; }
+  .sub { color:#8b949e; margin-bottom:24px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:16px; }
+  .card { background:#161b22; border:1px solid #30363d; border-radius:10px; padding:16px; }
+  .card h2 { font-size:14px; text-transform:uppercase; letter-spacing:.05em; color:#8b949e; margin:0 0 12px; }
+  button { background:#238636; color:white; border:none; border-radius:6px; padding:8px 14px; cursor:pointer; font-size:13px; }
+  button.secondary { background:#21262d; border:1px solid #30363d; }
+  button:hover { opacity:0.9; }
+  input, textarea { width:100%; background:#0d1117; border:1px solid #30363d; color:#e6edf3; border-radius:6px; padding:8px; margin-bottom:8px; box-sizing:border-box; font-family:monospace; font-size:12px; }
+  .status-dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px; }
+  .online { background:#3fb950; }
+  .offline { background:#f85149; }
+  pre { background:#0d1117; border:1px solid #30363d; border-radius:6px; padding:10px; max-height:220px; overflow:auto; font-size:12px; }
+  .row { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+  .conflict-card { margin-bottom: 16px; padding: 12px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; }
+  .diff-view { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .diff-panel { background: #161b22; padding: 10px; border-radius: 4px; border: 1px solid #30363d; }
+  .diff-panel h4 { margin: 0 0 8px 0; font-size: 12px; color: #8b949e; }
+  .merge-editor { margin-top: 12px; }
+  .bulk-actions { display: flex; gap: 8px; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+  <h1>Edge Memory & Intelligence Platform</h1>
+  <div class="sub">Local vector memory, live sync status, and search — all against the device's own shard.</div>
+
+  <div class="card" style="margin-bottom: 16px;">
+    <h2>Device Authentication</h2>
+    <div class="row">
+      <span id="deviceLabel">Not authenticated</span>
+      <button id="authBtn" class="secondary">Login/Register</button>
+    </div>
+    <div id="authPanel" style="display: none; margin-top: 12px;">
+      <input id="deviceIdInput" placeholder="Device ID (e.g., device-1)" style="margin-bottom: 8px;">
+      <input id="deviceNameInput" placeholder="Device Name (e.g., My Laptop)" style="margin-bottom: 8px;">
+      <div style="display: flex; gap: 8px;">
+        <button id="registerBtn">Register Device</button>
+        <button id="loginBtn" class="secondary">Login Existing</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Connectivity</h2>
+      <div class="row">
+        <span><span id="dot" class="status-dot offline"></span><span id="onlineLabel">checking…</span></span>
+        <button id="toggleBtn" class="secondary">Toggle offline</button>
+      </div>
+      <div class="row"><span>Pending (unsynced) points</span><span id="pending">–</span></div>
+      <div class="row"><span>Last sync</span><span id="lastSync">–</span></div>
+      <div class="row"><span>Last result</span><span id="lastResult">–</span></div>
+      <div class="row"><span>Sync state</span><span id="syncState">–</span></div>
+      <div class="row"><span>Circuit breaker</span><span id="circuitBreaker">–</span></div>
+      <div style="display: flex; gap: 8px; margin-top: 8px;">
+        <button id="syncBtn">Run sync now</button>
+        <button id="pauseSyncBtn" class="secondary">Pause sync</button>
+        <button id="resumeSyncBtn" class="secondary" style="display: none;">Resume sync</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Add memory point</h2>
+      <textarea id="textInput" rows="2" placeholder="Enter text (auto-embedded)"></textarea>
+      <textarea id="vecInput" rows="2" placeholder="Or vector as JSON, e.g. [0.1, 0.2, ...]"></textarea>
+      <textarea id="payloadInput" rows="2" placeholder='payload as JSON, e.g. {"title": "note"}'></textarea>
+      <button id="addBtn">Write to local memory</button>
+    </div>
+
+    <div class="card">
+      <h2>Search (local, offline-capable)</h2>
+      <textarea id="searchTextInput" rows="2" placeholder="Enter text query (auto-embedded)"></textarea>
+      <textarea id="searchVecInput" rows="2" placeholder="Or query vector as JSON"></textarea>
+      <button id="searchBtn">Search</button>
+      <pre id="searchResults">–</pre>
+    </div>
+
+    <div class="card">
+      <h2>Memory inspector</h2>
+      <button id="refreshBtn" class="secondary">Refresh</button>
+      <pre id="memoryList">–</pre>
+    </div>
+
+    <div class="card">
+      <h2>Conflict Resolution</h2>
+      <div class="row"><span>Unresolved conflicts</span><span id="conflictCount">–</span></div>
+      <div class="bulk-actions">
+        <button id="loadConflictsBtn" class="secondary">Load conflicts</button>
+        <button id="loadHistoryBtn" class="secondary">Load history</button>
+      </div>
+      <div class="bulk-actions" id="bulkResolveActions" style="display: none;">
+        <button onclick="resolveAllConflicts('local')" style="background: #238636;">Resolve All Local</button>
+        <button onclick="resolveAllConflicts('remote')" style="background: #f85149;">Resolve All Remote</button>
+      </div>
+      <div id="conflictList"></div>
+    </div>
+  </div>
+
+<script>
+const API = "http://localhost:8000";
+let authToken = localStorage.getItem("authToken") || null;
+let currentDevice = JSON.parse(localStorage.getItem("currentDevice") || "null");
+
+async function refreshStatus() {
+  const headers = authToken ? {"Authorization": `Bearer ${authToken}`} : {};
+  const res = await fetch(`${API}/sync/status`, {headers}).catch(() => null);
+  if (!res || !res.ok) {
+    document.getElementById("onlineLabel").textContent = "backend unreachable";
+    return;
+  }
+  const s = await res.json();
+  document.getElementById("dot").className = "status-dot " + (s.online ? "online" : "offline");
+  document.getElementById("onlineLabel").textContent = s.online ? "Online" : "Offline";
+  document.getElementById("pending").textContent = s.pending_points;
+  document.getElementById("lastSync").textContent = s.last_synced_at || "never";
+  document.getElementById("lastResult").textContent = s.last_sync_result || "–";
+  
+  // Update sync state display
+  document.getElementById("syncState").textContent = s.sync_paused ? "PAUSED" : "ACTIVE";
+  document.getElementById("syncState").style.color = s.sync_paused ? "#d29922" : "#3fb950";
+  
+  // Update circuit breaker status
+  document.getElementById("circuitBreaker").textContent = s.circuit_breaker_open ? "OPEN" : "CLOSED";
+  document.getElementById("circuitBreaker").style.color = s.circuit_breaker_open ? "#f85149" : "#3fb950";
+  
+  // Update pause/resume button visibility
+  document.getElementById("pauseSyncBtn").style.display = s.sync_paused ? "none" : "block";
+  document.getElementById("resumeSyncBtn").style.display = s.sync_paused ? "block" : "none";
+
+  // Update conflict count
+  const conflictRes = await fetch(`${API}/conflicts/count`, {headers}).catch(() => null);
+  if (conflictRes && conflictRes.ok) {
+    const conflictData = await conflictRes.json();
+    document.getElementById("conflictCount").textContent = conflictData.count;
+  }
+}
+
+document.getElementById("toggleBtn").onclick = async () => {
+  const s = await (await fetch(`${API}/sync/status`)).json();
+  await fetch(`${API}/sync/connectivity`, {
+    method: "POST", headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ online: !s.online })
+  });
+  refreshStatus();
+};
+
+document.getElementById("syncBtn").onclick = async () => {
+  await fetch(`${API}/sync/run`, { method: "POST" });
+  refreshStatus();
+};
+
+document.getElementById("pauseSyncBtn").onclick = async () => {
+  await fetch(`${API}/sync/pause`, { method: "POST" });
+  refreshStatus();
+};
+
+document.getElementById("resumeSyncBtn").onclick = async () => {
+  await fetch(`${API}/sync/resume`, { method: "POST" });
+  refreshStatus();
+};
+
+document.getElementById("addBtn").onclick = async () => {
+  const text = document.getElementById("textInput").value.trim();
+  const vectorText = document.getElementById("vecInput").value.trim();
+  const payload = JSON.parse(document.getElementById("payloadInput").value || "{}");
+  const headers = {"Content-Type": "application/json"};
+  if (authToken) headers["Authorization"] = `Bearer ${authToken}`;
+
+  if (text) {
+    // Use text-based memory with automatic embedding
+    await fetch(`${API}/memory/text`, {
+      method: "POST", headers,
+      body: JSON.stringify({ text, payload })
+    });
+  } else if (vectorText) {
+    // Use vector-based memory
+    const vector = JSON.parse(vectorText);
+    await fetch(`${API}/memory`, {
+      method: "POST", headers,
+      body: JSON.stringify({ vector, payload })
+    });
+  } else {
+    alert("Please enter either text or a vector");
+    return;
+  }
+  refreshStatus();
+  loadMemory();
+};
+
+document.getElementById("searchBtn").onclick = async () => {
+  const searchText = document.getElementById("searchTextInput").value.trim();
+  const vectorText = document.getElementById("searchVecInput").value.trim();
+  const headers = {"Content-Type": "application/json"};
+  if (authToken) headers["Authorization"] = `Bearer ${authToken}`;
+
+  let res;
+  if (searchText) {
+    // Use text-based search with automatic embedding
+    res = await fetch(`${API}/search/text`, {
+      method: "POST", headers,
+      body: JSON.stringify({ text: searchText, limit: 5 })
+    });
+  } else if (vectorText) {
+    // Use vector-based search
+    const vector = JSON.parse(vectorText);
+    res = await fetch(`${API}/search`, {
+      method: "POST", headers,
+      body: JSON.stringify({ vector, limit: 5 })
+    });
+  } else {
+    alert("Please enter either search text or a query vector");
+    return;
+  }
+  document.getElementById("searchResults").textContent = JSON.stringify(await res.json(), null, 2);
+};
+
+async function loadMemory() {
+  const res = await fetch(`${API}/memory?limit=50`).catch(() => null);
+  if (!res || !res.ok) return;
+  document.getElementById("memoryList").textContent = JSON.stringify(await res.json(), null, 2);
+}
+document.getElementById("refreshBtn").onclick = loadMemory;
+
+async function loadConflicts() {
+  const res = await fetch(`${API}/conflicts`).catch(() => null);
+  if (!res || !res.ok) return;
+  const conflicts = await res.json();
+  document.getElementById("conflictCount").textContent = conflicts.length;
+
+  const conflictList = document.getElementById("conflictList");
+  const bulkActions = document.getElementById("bulkResolveActions");
+  
+  if (conflicts.length === 0) {
+    conflictList.innerHTML = "<p>No unresolved conflicts</p>";
+    bulkActions.style.display = "none";
+    return;
+  }
+
+  bulkActions.style.display = "flex";
+
+  conflictList.innerHTML = conflicts.map(c => {
+    const timeDiff = Math.abs(c.remote_updated_at - c.local_updated_at);
+    const severity = timeDiff < 60 ? "low" : timeDiff < 300 ? "medium" : "high";
+    const severityColor = severity === "low" ? "#3fb950" : severity === "medium" ? "#d29922" : "#f85149";
+    
+    return `
+    <div class="conflict-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <div style="font-weight: bold;">Point ID: ${c.point_id}</div>
+        <div style="font-size: 11px; color: ${severityColor};">Severity: ${severity.toUpperCase()}</div>
+      </div>
+      <div class="diff-view">
+        <div class="diff-panel">
+          <h4>Local (updated: ${new Date(c.local_updated_at * 1000).toLocaleString()})</h4>
+          <pre style="margin: 0; font-size: 11px;">${JSON.stringify(c.local_payload, null, 2)}</pre>
+        </div>
+        <div class="diff-panel">
+          <h4>Remote (updated: ${new Date(c.remote_updated_at * 1000).toLocaleString()})</h4>
+          <pre style="margin: 0; font-size: 11px;">${JSON.stringify(c.remote_payload, null, 2)}</pre>
+        </div>
+      </div>
+      <div class="merge-editor">
+        <textarea id="merge-${c.point_id}" rows="3" placeholder='Custom merge payload (JSON)'></textarea>
+        <div style="display: flex; gap: 8px; margin-top: 8px;">
+          <button onclick="resolveConflict('${c.point_id}', 'local')" style="background: #238636;">Keep Local</button>
+          <button onclick="resolveConflict('${c.point_id}', 'remote')" style="background: #f85149;">Keep Remote</button>
+          <button onclick="resolveConflictWithMerge('${c.point_id}')" style="background: #d29922;">Custom Merge</button>
+        </div>
+      </div>
+    </div>
+  `}).join('');
+}
+
+async function resolveConflict(pointId, resolution) {
+  const res = await fetch(`${API}/conflicts/${pointId}/resolve`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ resolution_type: resolution })
+  });
+
+  if (res.ok) {
+    loadConflicts();
+    alert(`Conflict resolved: kept ${resolution} version`);
+  } else {
+    alert("Failed to resolve conflict");
+  }
+}
+
+async function resolveConflictWithMerge(pointId) {
+  const mergeText = document.getElementById(`merge-${pointId}`).value.trim();
+  if (!mergeText) {
+    alert("Please enter a merge payload");
+    return;
+  }
+  
+  try {
+    const mergedPayload = JSON.parse(mergeText);
+    const res = await fetch(`${API}/conflicts/${pointId}/resolve`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ resolution_type: "merge", merged_payload: mergedPayload })
+    });
+
+    if (res.ok) {
+      loadConflicts();
+      alert("Conflict resolved with custom merge");
+    } else {
+      alert("Failed to resolve conflict");
+    }
+  } catch (e) {
+    alert("Invalid JSON in merge payload");
+  }
+}
+
+async function resolveAllConflicts(resolution) {
+  if (!confirm(`Resolve all conflicts with ${resolution} version?`)) return;
+  
+  const res = await fetch(`${API}/conflicts/resolve-all`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ resolution_type: resolution })
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    loadConflicts();
+    alert(`Resolved ${data.resolved_count} of ${data.total_conflicts} conflicts`);
+  } else {
+    alert("Failed to resolve conflicts");
+  }
+}
+
+async function loadHistory() {
+  const res = await fetch(`${API}/conflicts/history`).catch(() => null);
+  if (!res || !res.ok) return;
+  const conflicts = await res.json();
+
+  const conflictList = document.getElementById("conflictList");
+  const bulkActions = document.getElementById("bulkResolveActions");
+  bulkActions.style.display = "none";
+
+  if (conflicts.length === 0) {
+    conflictList.innerHTML = "<p>No conflict history</p>";
+    return;
+  }
+
+  conflictList.innerHTML = conflicts.map(c => `
+    <div class="conflict-card" style="opacity: ${c.resolved ? '0.6' : '1'}">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <div style="font-weight: bold;">Point ID: ${c.point_id}</div>
+        <div style="font-size: 11px; color: ${c.resolved ? '#3fb950' : '#f85149'};">${c.resolved ? 'RESOLVED' : 'UNRESOLVED'}</div>
+      </div>
+      <div style="font-size: 11px; color: #8b949e; margin-bottom: 8px;">
+        Detected: ${new Date(c.detected_at * 1000).toLocaleString()}
+        ${c.resolution ? `| Resolution: ${c.resolution}` : ''}
+      </div>
+      <div class="diff-view">
+        <div class="diff-panel">
+          <h4>Local</h4>
+          <pre style="margin: 0; font-size: 10px;">${JSON.stringify(c.local_payload, null, 2)}</pre>
+        </div>
+        <div class="diff-panel">
+          <h4>Remote</h4>
+          <pre style="margin: 0; font-size: 10px;">${JSON.stringify(c.remote_payload, null, 2)}</pre>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.getElementById("loadConflictsBtn").onclick = loadConflicts;
+document.getElementById("loadHistoryBtn").onclick = loadHistory;
+
+// Device authentication functions
+function updateDeviceUI() {
+  if (currentDevice) {
+    document.getElementById("deviceLabel").textContent = `Device: ${currentDevice.device_name} (${currentDevice.device_id})`;
+    document.getElementById("authBtn").textContent = "Logout";
+  } else {
+    document.getElementById("deviceLabel").textContent = "Not authenticated";
+    document.getElementById("authBtn").textContent = "Login/Register";
+  }
+}
+
+document.getElementById("authBtn").onclick = () => {
+  const panel = document.getElementById("authPanel");
+  if (currentDevice) {
+    // Logout
+    authToken = null;
+    currentDevice = null;
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("currentDevice");
+    updateDeviceUI();
+  } else {
+    // Show login/register panel
+    panel.style.display = panel.style.display === "none" ? "block" : "none";
+  }
+};
+
+document.getElementById("registerBtn").onclick = async () => {
+  const deviceId = document.getElementById("deviceIdInput").value.trim();
+  const deviceName = document.getElementById("deviceNameInput").value.trim();
+
+  if (!deviceId || !deviceName) {
+    alert("Please enter both device ID and name");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API}/auth/register`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ device_id: deviceId, device_name: deviceName })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      authToken = data.access_token;
+      currentDevice = data.device_info;
+      localStorage.setItem("authToken", authToken);
+      localStorage.setItem("currentDevice", JSON.stringify(currentDevice));
+      document.getElementById("authPanel").style.display = "none";
+      updateDeviceUI();
+      alert(`Device registered: ${deviceName}`);
+    } else {
+      alert("Registration failed");
+    }
+  } catch (e) {
+    alert("Registration error: " + e.message);
+  }
+};
+
+document.getElementById("loginBtn").onclick = async () => {
+  const deviceId = document.getElementById("deviceIdInput").value.trim();
+
+  if (!deviceId) {
+    alert("Please enter device ID");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API}/auth/login`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ device_id: deviceId })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      authToken = data.access_token;
+      currentDevice = data.device_info;
+      localStorage.setItem("authToken", authToken);
+      localStorage.setItem("currentDevice", JSON.stringify(currentDevice));
+      document.getElementById("authPanel").style.display = "none";
+      updateDeviceUI();
+      alert(`Logged in as: ${currentDevice.device_name}`);
+    } else {
+      alert("Login failed - device not found");
+    }
+  } catch (e) {
+    alert("Login error: " + e.message);
+  }
+};
+
+// Initialize device UI
+updateDeviceUI();
+
+refreshStatus();
+loadMemory();
+setInterval(refreshStatus, 5000);
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+services:
+  qdrant-server:
+    image: qdrant/qdrant:latest
+    container_name: qdrant-cloud
+    ports:
+      - "6333:6333"   # REST
+      - "6334:6334"   # gRPC
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+volumes:
+  qdrant_storage:

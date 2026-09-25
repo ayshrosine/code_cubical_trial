@@ -1,0 +1,142 @@
+{"timestamp": "2026-09-25T12:32:30.600564", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:32:34.614305", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4013.7407779693604}
+{"timestamp": "2026-09-25T12:32:44.631431", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:32:48.638367", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4006.9363117218018}
+{"timestamp": "2026-09-25T12:32:58.648589", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:33:02.660515", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4011.9261741638184}
+{"timestamp": "2026-09-25T12:33:12.677392", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:33:16.696991", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4019.598960876465}
+{"timestamp": "2026-09-25T12:33:26.702284", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:33:30.715305", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4013.0209922790527}
+{"timestamp": "2026-09-25T12:33:40.717314", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:33:44.727080", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4009.7668170928955}
+{"timestamp": "2026-09-25T12:33:54.728582", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:33:58.752296", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4023.714542388916}
+{"timestamp": "2026-09-25T12:34:08.748161", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:34:12.765805", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4017.644166946411}
+{"timestamp": "2026-09-25T12:34:22.779309", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:34:26.794988", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4015.679359436035}
+{"timestamp": "2026-09-25T12:34:36.802916", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:34:40.824356", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4021.43931388855}
+{"timestamp": "2026-09-25T12:34:50.837323", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:34:54.856001", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4018.6779499053955}
+{"timestamp": "2026-09-25T12:35:04.867069", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:35:08.882215", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4015.146493911743}
+{"timestamp": "2026-09-25T12:35:18.882990", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:35:22.901817", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4018.826723098755}
+{"timestamp": "2026-09-25T12:35:32.893691", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:35:36.909665", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4015.9740447998047}
+{"timestamp": "2026-09-25T12:35:46.925992", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:35:50.941470", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4015.4783725738525}
+{"timestamp": "2026-09-25T12:36:00.937104", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:36:04.954071", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4016.967535018921}
+{"timestamp": "2026-09-25T12:36:14.953117", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:36:18.973253", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4020.1363563537598}
+{"timestamp": "2026-09-25T12:36:28.980180", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:36:33.003537", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4023.3569145202637}
+{"timestamp": "2026-09-25T12:36:42.996904", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:36:47.016305", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4019.4013118743896}
+{"timestamp": "2026-09-25T12:36:57.026686", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:37:01.051203", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4024.517297744751}
+{"timestamp": "2026-09-25T12:37:11.057104", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:37:15.065713", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4008.6092948913574}
+{"timestamp": "2026-09-25T12:37:25.060180", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:37:29.078962", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4018.7816619873047}
+{"timestamp": "2026-09-25T12:37:39.073978", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:37:43.088056", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4014.078140258789}
+{"timestamp": "2026-09-25T12:37:53.082929", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:37:57.098692", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4015.7625675201416}
+{"timestamp": "2026-09-25T12:38:23.618695", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:38:27.640899", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4022.2036838531494}
+{"timestamp": "2026-09-25T12:38:37.641780", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:38:41.671145", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4029.365301132202}
+{"timestamp": "2026-09-25T12:38:51.692921", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:38:55.707695", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4014.773368835449}
+{"timestamp": "2026-09-25T12:39:05.700390", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:39:09.711597", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4011.207342147827}
+{"timestamp": "2026-09-25T12:39:19.724917", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:39:23.751673", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4026.7550945281982}
+{"timestamp": "2026-09-25T12:39:27.793195", "event_type": "connectivity_change", "details": {"online": true, "state": "reconnecting"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:39:33.755038", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:39:37.777344", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4022.3066806793213}
+{"timestamp": "2026-09-25T12:39:47.807178", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:39:51.826730", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4019.552230834961}
+{"timestamp": "2026-09-25T12:39:52.348248", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:39:56.376151", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4027.9030799865723}
+{"timestamp": "2026-09-25T12:40:01.853306", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:40:05.877835", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4024.5296955108643}
+{"timestamp": "2026-09-25T12:40:15.861367", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:40:19.881945", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4020.578384399414}
+{"timestamp": "2026-09-25T12:40:29.876860", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:40:33.898406", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4021.5463638305664}
+{"timestamp": "2026-09-25T12:40:43.903322", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:40:47.923508", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4020.1852321624756}
+{"timestamp": "2026-09-25T12:40:57.928075", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:01.959078", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4031.0027599334717}
+{"timestamp": "2026-09-25T12:41:09.522284", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:10.291459", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:10.518415", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:11.958492", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:13.551422", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 1592.9298400878906}
+{"timestamp": "2026-09-25T12:41:14.303923", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:14.550335", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:15.984659", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:25.996178", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:30.003811", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4007.6327323913574}
+{"timestamp": "2026-09-25T12:41:34.071384", "event_type": "connectivity_change", "details": {"online": true, "state": "reconnecting"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:37.378834", "event_type": "connectivity_change", "details": {"online": true, "state": "reconnecting"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:37.402890", "event_type": "connectivity_change", "details": {"online": true, "state": "reconnecting"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:39.983514", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:44.008713", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4025.1994132995605}
+{"timestamp": "2026-09-25T12:41:54.008813", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:41:58.029206", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4020.3921794891357}
+{"timestamp": "2026-09-25T12:42:08.047387", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:42:12.065734", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4018.34774017334}
+{"timestamp": "2026-09-25T12:42:22.076755", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:42:26.089755", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4013.000011444092}
+{"timestamp": "2026-09-25T12:42:36.105316", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:42:40.129910", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4024.59454536438}
+{"timestamp": "2026-09-25T12:42:50.127266", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:42:54.154935", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4027.6691913604736}
+{"timestamp": "2026-09-25T12:43:04.178669", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:43:08.211484", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4032.8145027160645}
+{"timestamp": "2026-09-25T12:43:18.203946", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:43:22.230267", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4026.3209342956543}
+{"timestamp": "2026-09-25T12:43:32.246996", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:43:36.262158", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4015.162467956543}
+{"timestamp": "2026-09-25T12:43:46.281687", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:43:50.308341", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4026.65376663208}
+{"timestamp": "2026-09-25T12:44:00.334868", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:44:04.346180", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4011.312484741211}
+{"timestamp": "2026-09-25T12:44:14.354128", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:44:18.373914", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4019.7858810424805}
+{"timestamp": "2026-09-25T12:44:28.383241", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:44:32.402740", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4019.4995403289795}
+{"timestamp": "2026-09-25T12:44:42.428035", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:44:46.455497", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4027.461051940918}
+{"timestamp": "2026-09-25T12:44:56.452520", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:45:00.470602", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4018.082618713379}
+{"timestamp": "2026-09-25T12:45:10.487867", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:45:14.499004", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4011.136531829834}
+{"timestamp": "2026-09-25T12:45:24.506191", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:45:28.523863", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4017.671823501587}
+{"timestamp": "2026-09-25T12:45:38.539295", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:45:42.566770", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4026.451587677002}
+{"timestamp": "2026-09-25T12:45:52.567376", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:45:56.582959", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4015.5835151672363}
+{"timestamp": "2026-09-25T12:46:06.583125", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:46:10.597626", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4014.5013332366943}
+{"timestamp": "2026-09-25T12:46:20.610055", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:46:24.630463", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4020.4081535339355}
+{"timestamp": "2026-09-25T12:46:34.630774", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:46:38.645017", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4014.2431259155273}
+{"timestamp": "2026-09-25T12:46:48.655815", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:46:52.682296", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4026.4806747436523}
+{"timestamp": "2026-09-25T12:47:02.675276", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:47:06.685543", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4010.2665424346924}
+{"timestamp": "2026-09-25T12:47:16.704001", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:47:20.720253", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4016.2527561187744}
+{"timestamp": "2026-09-25T12:47:30.725945", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:47:34.749714", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4023.7698554992676}
+{"timestamp": "2026-09-25T12:47:44.767236", "event_type": "sync_start", "details": {"operation": "sync"}, "error_category": null, "duration_ms": null}
+{"timestamp": "2026-09-25T12:47:48.794451", "event_type": "sync_complete", "details": {"result": "skipped: offline", "operation": "sync"}, "error_category": null, "duration_ms": 4027.2154808044434}
